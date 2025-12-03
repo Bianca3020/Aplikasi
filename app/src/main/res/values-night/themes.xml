@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.HopeWave" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!-- Primary warna tetap (ungu pastel) -->
+        <item name="colorPrimary">#D02E65</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <!-- Surface = background card dalam mode gelap -->
+        <item name="colorSurface">#1E1E1E</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+
+        <!-- Background Night -->
+        <item name="android:windowBackground">#121212</item>
+        <item name="colorOnBackground">#FFFFFF</item>
+
+        <!-- Status bar lebih gelap -->
+        <item name="android:statusBarColor">#E91E63</item>
+
+    </style>
+
+</resources>

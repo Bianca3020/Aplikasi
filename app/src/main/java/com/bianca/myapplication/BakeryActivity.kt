@@ -39,7 +39,17 @@ class BakeryActivity : AppCompatActivity() {
 
             val chocolateVariant = spChocolate.selectedItem.toString()
 
-            val intent = Intent(this, CartActivity::class.java)
+            val intent = Intent(this, CheckoutActivity::class.java)
+
+            if (namaCustomer.isEmpty()) {
+                Toast.makeText(this, "Isi nama customer!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (croissant == 0 && donut == 0 && chocolate == 0 && milkshake == 0) {
+                Toast.makeText(this, "Masukkan jumlah pesanan!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             intent.putExtra("namaCustomer", namaCustomer)
             intent.putExtra("croissant", croissant)
@@ -49,6 +59,7 @@ class BakeryActivity : AppCompatActivity() {
             intent.putExtra("chocolateVariant", chocolateVariant)
 
             startActivity(intent)
+
         }
     }
 }

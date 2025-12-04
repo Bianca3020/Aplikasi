@@ -25,32 +25,22 @@
 
         <!-- Judul -->
         <TextView
-            android:layout_width="41dp"
-            android:layout_height="26dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="6dp"
-            android:text="Form"
-            android:textSize="22sp"
-            android:textStyle="bold|italic" />
-
-        <!-- Subjudul -->
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lab_RPL"
-            android:textSize="16sp"
-            android:textColor="#2E567D"
+            android:text="Form Pendaftaran"
+            android:textSize="26sp"
+            android:textStyle="bold"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp" />
+
 
         <!-- Label Identitas -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Identitas"
-            android:textColor="#0054FB"
+            android:textColor="?attr/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="12dp"

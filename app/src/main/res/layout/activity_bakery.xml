@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="🥐 Pastry n Bread"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_marginVertical="8dp" />
@@ -222,7 +222,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="☕ Drinks"
-            android:textColor="?attr/colorOnBackground"
+            android:textColor="?attr/colorPrimary"
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_marginVertical="8dp" />

@@ -15,9 +15,6 @@
             android:name=".CheckoutActivity"
             android:exported="false" />
         <activity
-            android:name=".CartActivity"
-            android:exported="false" />
-        <activity
             android:name=".ExitActivity"
             android:exported="false" />
         <activity

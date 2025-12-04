@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center_horizontal"
+    android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,13 +10,17 @@
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="26dp"
-        android:layout_height="24dp"
-        android:padding="6dp"
+        android:layout_height="26dp"
+        android:padding="4dp"
         android:src="@drawable/ic_back"
         android:layout_gravity="start"
         app:tint="?attr/colorOnBackground"
         android:contentDescription="Back" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <!-- Display -->
     <TextView
@@ -25,25 +28,23 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="end|center_vertical"
-        android:padding="16dp"
-        android:textSize="32sp"
+        android:padding="12dp"
+        android:textSize="28sp"
         android:text="0"
         android:textStyle="bold"
         android:elevation="4dp"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="30dp" />
 
-    <!-- Row template: gunakan marginRight untuk spacing horizontal -->
-
-    <!-- Row 1 -->
+    <!-- ROW 1 -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnClear"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="C"
@@ -54,7 +55,7 @@
         <Button
             android:id="@+id/btnDivide"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="/"
@@ -65,30 +66,35 @@
         <Button
             android:id="@+id/btnMultiply"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
+            android:layout_marginEnd="8dp"
             android:text="×"
             android:textSize="18sp"
             android:backgroundTint="#3187C9"
             android:textColor="#FFFFFF" />
 
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:text="Del"
+            android:textSize="18sp"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
-    <!-- Row spacing -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="12dp" />
-
-    <!-- Row 2 -->
+    <!-- ROW 2 -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn7"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="7"
@@ -97,7 +103,7 @@
         <Button
             android:id="@+id/btn8"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="8"
@@ -106,7 +112,7 @@
         <Button
             android:id="@+id/btn9"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="9"
@@ -115,27 +121,24 @@
         <Button
             android:id="@+id/btnMinus"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:text="-"
             android:textSize="18sp"
             android:backgroundTint="#3187C9"
             android:textColor="#FFFFFF" />
-
     </LinearLayout>
 
-    <Space android:layout_width="match_parent" android:layout_height="12dp" />
-
-    <!-- Row 3 -->
+    <!-- ROW 3 -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn4"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="4"
@@ -144,7 +147,7 @@
         <Button
             android:id="@+id/btn5"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="5"
@@ -153,7 +156,7 @@
         <Button
             android:id="@+id/btn6"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="6"
@@ -162,27 +165,24 @@
         <Button
             android:id="@+id/btnPlus"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:text="+"
             android:textSize="18sp"
             android:backgroundTint="#3187C9"
             android:textColor="#FFFFFF" />
-
     </LinearLayout>
 
-    <Space android:layout_width="match_parent" android:layout_height="12dp" />
-
-    <!-- Row 4 -->
+    <!-- ROW 4 -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn1"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="1"
@@ -191,7 +191,7 @@
         <Button
             android:id="@+id/btn2"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="2"
@@ -200,7 +200,7 @@
         <Button
             android:id="@+id/btn3"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="3"
@@ -209,27 +209,24 @@
         <Button
             android:id="@+id/btnEquals"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:text="="
             android:textSize="18sp"
             android:backgroundTint="#4CAF50"
             android:textColor="#FFFFFF" />
-
     </LinearLayout>
 
-    <Space android:layout_width="match_parent" android:layout_height="12dp" />
-
-    <!-- Row 5 (Zero Row) -->
+    <!-- ROW 5 -->
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn0"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="2"
             android:layout_marginEnd="8dp"
             android:text="0"
@@ -238,7 +235,7 @@
         <Button
             android:id="@+id/btnDot"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:text="."
             android:textSize="18sp" />

@@ -10,18 +10,17 @@ class CalculatorActivity : AppCompatActivity() {
 
     private lateinit var display: TextView
     private var currentInput = ""
-    private var storedNumber = ""
-    private var operator = ""
-    private var resultShown = false
+    private var lastValue = 0.0
+    private var lastOperator = ""
+    private var isOperatorPressed = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
+
         // BACK BUTTON
-        val btnBack = findViewById<ImageView>(R.id.btnBack)
-        btnBack.setOnClickListener {
-            finish()
-        }
+        findViewById<ImageView>(R.id.btnBack).setOnClickListener { finish() }
+
         display = findViewById(R.id.tvDisplay)
 
         // Number buttons
@@ -37,89 +36,98 @@ class CalculatorActivity : AppCompatActivity() {
             }
         }
 
-        // Operator buttons
+        // Operators
         findViewById<Button>(R.id.btnPlus).setOnClickListener { onOperatorClick("+") }
         findViewById<Button>(R.id.btnMinus).setOnClickListener { onOperatorClick("-") }
         findViewById<Button>(R.id.btnMultiply).setOnClickListener { onOperatorClick("*") }
         findViewById<Button>(R.id.btnDivide).setOnClickListener { onOperatorClick("/") }
 
-        // Dot button
         findViewById<Button>(R.id.btnDot).setOnClickListener { onDotClick() }
-
-        // Clear
         findViewById<Button>(R.id.btnClear).setOnClickListener { clearAll() }
+        findViewById<Button>(R.id.btnDelete).setOnClickListener { deleteLast() }
+        findViewById<Button>(R.id.btnEquals).setOnClickListener { calculateFinal() }
+    }
 
-        // Equals
-        findViewById<Button>(R.id.btnEquals).setOnClickListener { calculateResult() }
+    // FORMATTER — removes ".0" but keeps decimals if needed
+    private fun formatNumber(value: Double): String {
+        return if (value % 1 == 0.0) {
+            value.toInt().toString()
+        } else {
+            value.toString()
+        }
     }
 
     private fun onNumberClick(num: String) {
-        if (resultShown) {
+        if (isOperatorPressed) {
             currentInput = ""
-            resultShown = false
+            isOperatorPressed = false
         }
+
         currentInput += num
-        updateDisplay()
+        display.text = currentInput
     }
 
     private fun onDotClick() {
-        if (resultShown) {
-            currentInput = ""
-            resultShown = false
-        }
         if (!currentInput.contains(".")) {
-            currentInput += if (currentInput.isEmpty()) "0." else "."
-            updateDisplay()
+            currentInput = if (currentInput.isEmpty()) "0." else "$currentInput."
+            display.text = currentInput
         }
     }
 
     private fun onOperatorClick(op: String) {
-        if (currentInput.isEmpty()) return
-
-        storedNumber = currentInput
-        currentInput = ""
-        operator = op
-        updateDisplay()
-    }
-
-    private fun calculateResult() {
-        if (storedNumber.isEmpty() || currentInput.isEmpty()) return
-
-        val num1 = storedNumber.toDouble()
-        val num2 = currentInput.toDouble()
-        var result = 0.0
-
-        result = when (operator) {
-            "+" -> num1 + num2
-            "-" -> num1 - num2
-            "*" -> num1 * num2
-            "/" -> {
-                if (num2 == 0.0) {
-                    display.text = "Error"
-                    return
-                } else num1 / num2
-            }
-            else -> return
+        if (currentInput.isEmpty()) {
+            lastOperator = op
+            return
         }
 
-        display.text = result.toString().removeSuffix(".0")
-        currentInput = result.toString()
-        storedNumber = ""
-        operator = ""
-        resultShown = true
+        if (lastOperator.isEmpty()) {
+            lastValue = currentInput.toDouble()
+        } else {
+            lastValue = performOperation(lastValue, currentInput.toDouble(), lastOperator)
+        }
+
+        lastOperator = op
+        isOperatorPressed = true
+
+        display.text = "${formatNumber(lastValue)} $op"
+    }
+
+    private fun performOperation(a: Double, b: Double, op: String): Double {
+        return when (op) {
+            "+" -> a + b
+            "-" -> a - b
+            "*" -> a * b
+            "/" -> if (b == 0.0) 0.0 else a / b
+            else -> b
+        }
+    }
+
+    private fun calculateFinal() {
+        if (currentInput.isEmpty() || lastOperator.isEmpty()) return
+
+        val result = performOperation(lastValue, currentInput.toDouble(), lastOperator)
+
+        // display final formatted result
+        display.text = formatNumber(result)
+
+        // prepare for next chain
+        lastValue = result
+        currentInput = formatNumber(result)
+        lastOperator = ""
     }
 
     private fun clearAll() {
         currentInput = ""
-        storedNumber = ""
-        operator = ""
-        resultShown = false
+        lastValue = 0.0
+        lastOperator = ""
+        isOperatorPressed = false
         display.text = "0"
     }
 
-    private fun updateDisplay() {
-        display.text =
-            if (currentInput.isEmpty()) "0"
-            else currentInput
+    private fun deleteLast() {
+        if (currentInput.isNotEmpty()) {
+            currentInput = currentInput.dropLast(1)
+            display.text = if (currentInput.isEmpty()) "0" else currentInput
+        }
     }
 }
